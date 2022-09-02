@@ -11,7 +11,7 @@ export const getWordByTerm = async(query: string) => {
 
     const words = await Word.find({
         $text: {$search: query}
-    })
+    }).select("_id word meaning")
 
     await db.disconnect()
 

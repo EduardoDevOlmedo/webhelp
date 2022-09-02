@@ -37,6 +37,7 @@ const SearchPage:NextPage<Props> = ({words}) => {
                 return (
                 <Grid key={word._id} item xs={12} md={4}>
                     <WordCard 
+                        _id={word._id}
                         title={word.word}
                         meanings={word.meaning}
                     />
