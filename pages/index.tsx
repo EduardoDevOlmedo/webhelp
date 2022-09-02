@@ -10,38 +10,9 @@ import { useRouter } from 'next/router'
 const Index = () => {
   
 
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data, error } = useSWR<any>(`/api/words`, fetcher)
   const [searchTerm, setSearchTerm] = useState('')
   const router = useRouter();
-
-  if(!data){
-    return (
-      <>
-        <Navbar/>
-        <Box
-        sx={{width: '100%', height: '100vh' ,justifyContent: 'center', mb: 5, alignItems: 'center', display: 'flex'}}
-        
-        >
-          <CircularProgress  sx={{color: '#000'}} />
-        </Box>
-      </>
-    )
-  }
-
-  if(error){
-    return (
-      <>
-        <Navbar/>
-        <Box
-        sx={{width: '100%', height: '100vh' ,justifyContent: 'center', mb: 5, alignItems: 'center', display: 'flex'}}
-
-        >
-          <Typography>That&apos;s an error </Typography>
-        </Box>
-      </>
-    )
-  }
+ 
 
   const onSearchTerm = () => {
     if(searchTerm.trim().length === 0) return;
@@ -81,9 +52,9 @@ const Index = () => {
       <Box
         sx={{textAlign: 'center', mb: 4}}
       >
-        <Typography variant="h6">
+        {/* <Typography variant="h6">
           Featured words:
-        </Typography>
+        </Typography> */}
       </Box>
           <Grid container 
             spacing={3}
@@ -93,7 +64,7 @@ const Index = () => {
               width: '90%',
               justifyContent: 'center', alignItems: 'center', display: 'flex'}}
           >
-              {
+              {/* {
                 data!.map((word: IWord) => {
                     return (
                       <Grid key={word._id} item xs={12} md={4}>
@@ -105,7 +76,7 @@ const Index = () => {
                       </Grid>
                     )
                 })
-              }
+              } */}
         </Grid>
     </>
   )
