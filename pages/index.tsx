@@ -1,22 +1,22 @@
 import {  Grid, Box,  Typography, TextField, CircularProgress, Button, Input } from '@mui/material'
 import React, { useState } from 'react'
 import Navbar from '../components/ui/Navbar'
-import WordCard from '../components/ui/WordCard'
-import useSWR from 'swr'
-import { IWord } from '../interfaces'
 import { Search } from '@mui/icons-material'
 import { useRouter } from 'next/router'
+import DataUsageIcon from '@mui/icons-material/DataUsage';
 
 const Index = () => {
   
 
   const [searchTerm, setSearchTerm] = useState('')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const router = useRouter();
  
 
   const onSearchTerm = () => {
     if(searchTerm.trim().length === 0) return;
-    console.log(searchTerm)
+    setIsLoading(true);
     router.push(`/search/${searchTerm}`)
   }
 
@@ -64,19 +64,10 @@ const Index = () => {
               width: '90%',
               justifyContent: 'center', alignItems: 'center', display: 'flex'}}
           >
-              {/* {
-                data!.map((word: IWord) => {
-                    return (
-                      <Grid key={word._id} item xs={12} md={4}>
-                          <WordCard 
-                              _id={word._id!}
-                              title={word.word}
-                              meanings={word.meaning}
-                          />
-                      </Grid>
-                    )
-                })
-              } */}
+
+              {
+                isLoading && <DataUsageIcon className="loading" /> 
+              }
         </Grid>
     </>
   )
