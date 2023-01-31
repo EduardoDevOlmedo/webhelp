@@ -28,7 +28,7 @@ const Navbar = () => {
             alt="logo"
             width={100}
             height={100}
-            src={'/assets/logo-webhelp-LS.jpeg'}
+            src={'/assets/new language studio.png'}
         />
             </Link>
         </NextLink>
