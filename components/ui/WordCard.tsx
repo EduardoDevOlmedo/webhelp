@@ -14,7 +14,12 @@ const WordCard: React.FC<Props> = ({_id, title, meanings}) => {
 
 
   return (
-    <Card>
+    <Card
+      sx={{
+        height: '200px',
+        display: 'grid'
+      }}
+    >
     <CardContent>
       <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
         {title}

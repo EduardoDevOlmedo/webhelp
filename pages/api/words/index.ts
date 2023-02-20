@@ -26,10 +26,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 const getWords = async(req: NextApiRequest, res: NextApiResponse<Data>) => {
 
 
-    await db.connect();
 
     try {
-        const words = await Word.find().lean().sort({date: -1});
+        const words = await Word.find().sort({ _id: -1 }).limit(Number(req.query!.size!));
         return res.status(200).json(words)
     } catch (error) {
         return res.status(400).json({message: 'An error has ocurred'})
